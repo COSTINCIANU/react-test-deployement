@@ -28,7 +28,7 @@ jobs:
           path: test.txt
 
 # On télécharge tout la parti run test qui et fait par npm
-  download-test:
+  download_test:
     name: Download Test
     runs-on: ubuntu-latest 
     needs: test
