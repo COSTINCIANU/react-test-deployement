@@ -1,44 +1,38 @@
-
-name: Artifacts React 
+name: Artifatcs React App
 permissions:
   contents: write
-
-on: 
-  workflow_dispatch: 
-
-jobs: 
-# On lance le test
+on:
+  workflow_dispatch:
+jobs:
   test:
-    runs-on: ubuntu-latest 
-    steps: 
-      - name: Code 
-        uses: actions/checkout@v3 
-      - name: Install Node v20.15
-        uses: actions/setup-node@v3 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code
+        uses: actions/checkout@v3
+      - name: Install Node v18
+        uses: actions/setup-node@v3
         with:
-          node-version: 20.15 
-      - name: Insstall 
-        run: npm install 
-      - name: Test 
+          node-version: 18
+      - name: Install
+        run: npm install
+      - name: Test
         run: npm run test > test.txt
       - name: Upload Test
-        uses: actions/upload-artifact@v3 
+        uses: actions/upload-artifact@v3
         with:
           name: testing
           path: test.txt
-
-# On télécharge tout la parti run test qui et fait par npm
   download-test:
     name: Download Test
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: DownloadTest 
+      - name: DownloadTest
         uses: actions/download-artifact@v3
         with:
           name: testing
-      - name: Print result 
-        shell: bash 
+      - name: Print result
+        shell: bash
         run: |
           value=`cat test.txt`
           echo $value
