@@ -7,9 +7,10 @@ permissions:
 on: 
   workflow_dispatch: 
 # On lui precise la branche pour pas ecrase lea branch gh-pages
-  push:
-    branches:
-      - main
+# Le push on le active quand on veux ici ce pour cela que je le commante 
+ #push:
+    #branches:
+      #- main
 
 jobs: 
 # On lance le test
