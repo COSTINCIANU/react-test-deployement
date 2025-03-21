@@ -6,8 +6,43 @@ permissions:
 
 on: 
   workflow_dispatch: 
+# On lui precise la branche pour pas ecrase lea branch gh-pages
+  push:
+    branches:
+      - main
 
 jobs: 
+# On lance le test
+  test:
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Code 
+        uses: actions/checkout@v3 
+      - name: Install Node v20.15
+        uses: actions/setup-node@v3 
+        with:
+          node-version: 20.15 
+      - name: Insstall 
+        run: npm install 
+      - name: Test 
+        run: npm run test 
+
+# On bulide 
+  build:
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Code 
+        uses: actions/checkout@v3 
+      - name: Install Node v20.15
+        uses: actions/setup-node@v3 
+        with:
+          node-version: 20.15 
+      - name: Insstall 
+        run: npm install 
+      - name: Build 
+        run: npm run build 
+
+# Et on deploy
   deploy:
     runs-on: ubuntu-latest 
     steps: 
