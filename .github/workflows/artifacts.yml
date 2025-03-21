@@ -34,7 +34,7 @@ jobs:
     needs: test
     steps:
       - name: DownloadTest 
-        uses: actions/download-aritfact@v3
+        uses: actions/download-artifact@v3
         with:
           name: testing
       - name: Print result 
