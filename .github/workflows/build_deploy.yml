@@ -29,6 +29,8 @@ jobs:
 
 # On bulide 
   build:
+    # On lui precise que on a bessoin que le jobs test soit terminer avant de alle plus loin
+    needs: test
     runs-on: ubuntu-latest 
     steps: 
       - name: Code 
@@ -44,6 +46,8 @@ jobs:
 
 # Et on deploy
   deploy:
+    # On lui precise que on a bessoin que le jobs test soit terminer avant de alle plus loin
+    needs: test
     runs-on: ubuntu-latest 
     steps: 
       - name: Code 
